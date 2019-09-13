@@ -1,0 +1,54 @@
+{
+    "name": "daniel-werner/laravel-schemacrawler",
+    "description": "Laravel wrapper for SchemaCrawler",
+    "keywords": [
+        "daniel-werner",
+        "laravel-schemacrawler"
+    ],
+    "homepage": "https://github.com/daniel-werner/laravel-schemacrawler",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Daniel Werner",
+            "email": "vernerd@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DanielWerner\\LaravelSchemaCrawler\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DanielWerner\\LaravelSchemaCrawler\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DanielWerner\\LaravelSchemaCrawler\\LaravelSchemaCrawlerServiceProvider"
+            ],
+            "aliases": {
+                "SchemaCrawler": "DanielWerner\\LaravelSchemaCrawler\\LaravelSchemaCrawlerFacade"
+            }
+        }
+    }
+}
