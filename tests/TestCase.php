@@ -9,7 +9,7 @@
 namespace DanielWerner\LaravelSchemaCrawler\Tests;
 
 
-use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawler;
+use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerFacade;
 use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -22,7 +22,31 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'SchemaCrawler' => LaravelSchemaCrawler::class
+            'SchemaCrawler' => LaravelSchemaCrawlerFacade::class
         ];
+    }
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+
+        config(['database.default' => 'mysql']);
+        config([
+            'database.mysql' => [
+                'driver' => 'mysql',
+                'host' => '127.0.0.1',
+                'port' => '3306',
+                'database' => 'tracy',
+                'username' => 'root',
+                'password' => '123',
+                'unix_socket' => '',
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
+                'prefix' => '',
+                'strict' => true,
+                'engine' => null,
+            ],
+        ]);
     }
 }
