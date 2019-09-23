@@ -30,7 +30,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
-
         config(['database.default' => 'mysql']);
         config([
             'database.connections.mysql' => [
@@ -51,6 +50,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->artisan('migrate', ['--database' => 'mysql'])->run();
+        $this->artisan('migrate')->run();
     }
 }

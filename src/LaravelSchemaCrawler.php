@@ -13,7 +13,8 @@ class LaravelSchemaCrawler
         }
 
         $crawlerArgumentsArray = $arguments->toArray();
-        array_unshift($crawlerArgumentsArray, './bin/schemacrawler/schemacrawler.sh');
+        $command = './bin/schemacrawler/schemacrawler.sh';
+        array_unshift($crawlerArgumentsArray, $command);
 
         $process = new Process($crawlerArgumentsArray);
         $process->run();

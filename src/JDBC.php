@@ -11,7 +11,7 @@ namespace DanielWerner\LaravelSchemaCrawler;
 
 class JDBC
 {
-    public static function url($databaseDriver, $server, $port): string
+    public static function url($databaseDriver, $server, $port = null): string
     {
         $url = '';
 
