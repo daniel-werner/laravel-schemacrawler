@@ -33,11 +33,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         config(['database.default' => 'mysql']);
         config([
-            'database.mysql' => [
+            'database.connections.mysql' => [
                 'driver' => 'mysql',
                 'host' => '127.0.0.1',
                 'port' => '3306',
-                'database' => 'tracy',
+                'database' => 'crawl_test',
                 'username' => 'root',
                 'password' => '123',
                 'unix_socket' => '',
@@ -48,5 +48,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
                 'engine' => null,
             ],
         ]);
+
+
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->artisan('migrate', ['--database' => 'mysql'])->run();
     }
 }
