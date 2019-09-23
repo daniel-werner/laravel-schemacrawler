@@ -67,5 +67,16 @@ class SchemaCrawlerTest extends TestCase
         unlink($fileName);
     }
 
+    /** @test */
+    public function schema_crawl_test_with_arguments_svg_output()
+    {
+        $fileName = $this->outputPath . '/test.html';
+        $crawlerArguments = new SchemaCrawlerArguments($fileName, 'svg');
+        LaravelSchemaCrawlerFacade::crawl($crawlerArguments);
+
+        $this->assertTrue(file_exists($fileName));
+        unlink($fileName);
+    }
+
 
 }
