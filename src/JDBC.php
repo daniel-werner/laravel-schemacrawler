@@ -33,13 +33,3 @@ class JDBC
         return $url;
     }
 }
-/*
-db2            IBM DB2
- hsqldb         HyperSQL DataBase
- mysql          MySQL
- offline        SchemaCrawler Offline Catalog Snapshot
- oracle         Oracle
- postgresql     PostgreSQL
- sqlite         SQLite
- sqlserver      Microsoft SQL Server
-*/
