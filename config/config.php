@@ -1,6 +1,9 @@
 <?php
 
 return [
+
+    'routes_enabled' => env('SCHEMACRAWLER_ROUTES_ENABLED', true),
+
     'schemacrawler_executable' => 'schemacrawler.sh',
 
     'info_level' => 'standard',
