@@ -2,7 +2,7 @@
 
 namespace DanielWerner\LaravelSchemaCrawler\Tests;
 
-use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerFacade;
+use DanielWerner\LaravelSchemaCrawler\Facades\SchemaCrawler;
 use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -28,9 +28,9 @@ class SchemaCrawlerTest extends TestCase
     /** @test */
     public function schema_crawl_test()
     {
-        LaravelSchemaCrawlerFacade::crawl();
-        $this->assertTrue(file_exists('schema.pdf'));
-        unlink('schema.pdf');
+        $file = SchemaCrawler::crawl();
+        $this->assertTrue(file_exists($file));
+        unlink($file);
     }
 
     /** @test */
@@ -39,7 +39,7 @@ class SchemaCrawlerTest extends TestCase
         $fileName = $this->outputPath . '/test.pdf';
         $crawlerArguments = new SchemaCrawlerArguments($fileName);
 
-        LaravelSchemaCrawlerFacade::crawl($crawlerArguments);
+        SchemaCrawler::crawl($crawlerArguments);
 
         $this->assertTrue(file_exists($fileName));
         unlink($fileName);
@@ -50,7 +50,7 @@ class SchemaCrawlerTest extends TestCase
     {
         $fileName = $this->outputPath . '/test.png';
         $crawlerArguments = new SchemaCrawlerArguments($fileName, 'png');
-        LaravelSchemaCrawlerFacade::crawl($crawlerArguments);
+        SchemaCrawler::crawl($crawlerArguments);
 
         $this->assertTrue(file_exists($fileName));
         unlink($fileName);
@@ -61,7 +61,7 @@ class SchemaCrawlerTest extends TestCase
     {
         $fileName = $this->outputPath . '/test.html';
         $crawlerArguments = new SchemaCrawlerArguments($fileName, 'html');
-        LaravelSchemaCrawlerFacade::crawl($crawlerArguments);
+        SchemaCrawler::crawl($crawlerArguments);
 
         $this->assertTrue(file_exists($fileName));
         unlink($fileName);
@@ -72,7 +72,7 @@ class SchemaCrawlerTest extends TestCase
     {
         $fileName = $this->outputPath . '/test.html';
         $crawlerArguments = new SchemaCrawlerArguments($fileName, 'svg');
-        LaravelSchemaCrawlerFacade::crawl($crawlerArguments);
+        SchemaCrawler::crawl($crawlerArguments);
 
         $this->assertTrue(file_exists($fileName));
         unlink($fileName);

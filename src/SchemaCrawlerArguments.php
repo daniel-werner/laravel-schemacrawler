@@ -44,11 +44,11 @@ class SchemaCrawlerArguments
         ?string $infoLevel = null,
         ?string $command = null
     ) {
-        $connection = config('database.' . ($connection ?? 'default'));
+        $connection = config('database.' . ($connection ?? config('laravel-schemacrawler.connection')));
 
         $this->user = config('database.connections.' . $connection . '.username');
         $this->password = config('database.connections.' . $connection . '.password');
-        $this->infoLevel = $infoLevel ?? 'standard';
+        $this->infoLevel = $infoLevel ?? config('laravel-schemacrawler.info_level');
         $this->command = $command ?? 'schema';
 
         $databaseDriver = config('database.connections.' . $connection . '.driver');
@@ -56,8 +56,8 @@ class SchemaCrawlerArguments
         $port = config('database.connections.' . $connection . '.port');
         $this->url = JDBC::url($databaseDriver, $host, $port);
 
-        $this->outputFile = $outputFile ?? 'schema.pdf';
-        $this->outputFormat = $outputFormat ?? 'pdf';
+        $this->outputFile = $outputFile ?? config('laravel-schemacrawler.output_file');
+        $this->outputFormat = $outputFormat ?? config('laravel-schemacrawler.output_format');
         $this->schemas = config('database.connections.' . $connection . '.database');
     }
 
@@ -71,6 +71,11 @@ class SchemaCrawlerArguments
         }
 
         return $arguments;
+    }
+
+    public function getOutputFile()
+    {
+        return $this->outputFile;
     }
 
 

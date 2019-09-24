@@ -1,13 +1,13 @@
 <?php
 
-namespace DanielWerner\LaravelSchemaCrawler;
+namespace DanielWerner\LaravelSchemaCrawler\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \DanielWerner\LaravelSchemacrawler\Skeleton\SkeletonClass
+ * @see \DanielWerner\LaravelSchemacrawler\LaravelSchemaCrawler
  */
-class LaravelSchemaCrawlerFacade extends Facade
+class SchemaCrawler extends Facade
 {
     /**
      * Get the registered name of the component.

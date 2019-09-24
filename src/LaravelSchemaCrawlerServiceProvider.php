@@ -17,7 +17,7 @@ class LaravelSchemaCrawlerServiceProvider extends ServiceProvider
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-schemacrawler');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-schemacrawler');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+         $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([

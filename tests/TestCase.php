@@ -9,7 +9,7 @@
 namespace DanielWerner\LaravelSchemaCrawler\Tests;
 
 
-use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerFacade;
+use DanielWerner\LaravelSchemaCrawler\SchemaCrawler;
 use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -22,7 +22,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'SchemaCrawler' => LaravelSchemaCrawlerFacade::class
+            'SchemaCrawler' => SchemaCrawler::class
         ];
     }
 
