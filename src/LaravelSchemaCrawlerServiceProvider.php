@@ -2,6 +2,7 @@
 
 namespace DanielWerner\LaravelSchemaCrawler;
 
+use DanielWerner\LaravelSchemaCrawler\Console\Commands\SchemaCrawlerCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelSchemaCrawlerServiceProvider extends ServiceProvider
@@ -43,7 +44,7 @@ class LaravelSchemaCrawlerServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+             $this->commands([SchemaCrawlerCommand::class]);
         }
     }
 
