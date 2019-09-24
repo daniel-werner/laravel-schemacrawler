@@ -8,16 +8,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SchemaCrawlerTest extends TestCase
 {
-    protected $outputPath;
+    use RefreshDatabase;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->outputPath = __DIR__ . '/output';
     }
-
-    use RefreshDatabase;
-
 
     protected function tearDown(): void
     {
@@ -36,7 +32,7 @@ class SchemaCrawlerTest extends TestCase
     /** @test */
     public function schema_crawl_test_with_arguments_pdf_output()
     {
-        $fileName = $this->outputPath . '/test.pdf';
+        $fileName = storage_path('app/test.pdf');
         $crawlerArguments = new SchemaCrawlerArguments($fileName);
 
         SchemaCrawler::crawl($crawlerArguments);
@@ -48,7 +44,7 @@ class SchemaCrawlerTest extends TestCase
     /** @test */
     public function schema_crawl_test_with_arguments_png_output()
     {
-        $fileName = $this->outputPath . '/test.png';
+        $fileName = storage_path('app/test.png');
         $crawlerArguments = new SchemaCrawlerArguments($fileName, 'png');
         SchemaCrawler::crawl($crawlerArguments);
 
@@ -59,7 +55,7 @@ class SchemaCrawlerTest extends TestCase
     /** @test */
     public function schema_crawl_test_with_arguments_html_output()
     {
-        $fileName = $this->outputPath . '/test.html';
+        $fileName = storage_path('app/test.html');
         $crawlerArguments = new SchemaCrawlerArguments($fileName, 'html');
         SchemaCrawler::crawl($crawlerArguments);
 
@@ -70,7 +66,7 @@ class SchemaCrawlerTest extends TestCase
     /** @test */
     public function schema_crawl_test_with_arguments_svg_output()
     {
-        $fileName = $this->outputPath . '/test.html';
+        $fileName = storage_path('app/test.html');
         $crawlerArguments = new SchemaCrawlerArguments($fileName, 'svg');
         SchemaCrawler::crawl($crawlerArguments);
 
