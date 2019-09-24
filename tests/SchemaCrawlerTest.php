@@ -5,6 +5,7 @@ namespace DanielWerner\LaravelSchemaCrawler\Tests;
 use DanielWerner\LaravelSchemaCrawler\Facades\SchemaCrawler;
 use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class SchemaCrawlerTest extends TestCase
 {
@@ -72,6 +73,16 @@ class SchemaCrawlerTest extends TestCase
 
         $this->assertTrue(file_exists($file));
         unlink($file);
+    }
+
+    /** @test */
+    public function schema_crawl_test_invalid_crawler_executable()
+    {
+        config(['laravel-schemacrawler.schemacrawler_executable' => 'non_existing']);
+
+        $this->expectException(ProcessFailedException::class);
+        SchemaCrawler::crawl();
+
     }
 
 

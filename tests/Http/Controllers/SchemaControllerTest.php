@@ -36,4 +36,34 @@ class SchemaControllerTest extends TestCase
             ->assertStatus(200)
             ->assertHeader('content-type', 'image/png');
     }
+
+    /**
+     * @test
+     */
+    public function get_schema_html_format()
+    {
+        $params = [
+            'output_file' => 'schema.html',
+            'output_format' => 'html'
+        ];
+
+        $this->get(route('schema.show', $params) )
+            ->assertStatus(200)
+            ->assertHeader('content-type', 'text/html');
+    }
+
+    /**
+     * @test
+     */
+    public function get_schema_svg_format()
+    {
+        $params = [
+            'output_file' => 'schema.html',
+            'output_format' => 'svg'
+        ];
+
+        $this->get(route('schema.show', $params) )
+            ->assertStatus(200)
+            ->assertHeader('content-type', 'image/svg+xml');
+    }
 }
