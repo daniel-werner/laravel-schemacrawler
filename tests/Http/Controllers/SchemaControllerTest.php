@@ -17,8 +17,23 @@ class SchemaControllerTest extends TestCase
      */
     public function get_schema_without_arguments()
     {
-        $response = $this->get(route('schema.show'));
-        $response->assertStatus(200);
-        $response->assertHeader('ContentType', 'application/pdf');
+        $this->get(route('schema.show'))
+            ->assertStatus(200)
+            ->assertHeader('content-type', 'application/pdf');
+    }
+
+    /**
+     * @test
+     */
+    public function get_schema_png_format()
+    {
+        $params = [
+            'output_file' => 'schema.png',
+            'output_format' => 'png'
+        ];
+
+        $this->get(route('schema.show', $params) )
+            ->assertStatus(200)
+            ->assertHeader('content-type', 'image/png');
     }
 }

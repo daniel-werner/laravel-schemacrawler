@@ -56,7 +56,7 @@ class SchemaCrawlerArguments
         $port = config('database.connections.' . $connection . '.port');
         $this->url = JDBC::url($databaseDriver, $host, $port);
 
-        $this->outputFile = $outputFile ?? config('laravel-schemacrawler.output_file');
+        $this->outputFile = config('laravel-schemacrawler.output_base_path') . DIRECTORY_SEPARATOR . ( $outputFile ?? config('laravel-schemacrawler.output_file') );
         $this->outputFormat = $outputFormat ?? config('laravel-schemacrawler.output_format');
         $this->schemas = config('database.connections.' . $connection . '.database');
     }

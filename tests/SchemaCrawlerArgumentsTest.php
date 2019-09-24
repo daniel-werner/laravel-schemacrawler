@@ -33,7 +33,7 @@ class SchemaCrawlerArgumentsTest extends TestCase
             '--info-level', 'standard',
             '--command', 'schema',
             '--url', 'jdbc:mysql://127.0.0.1:3306?serverTimezone=UTC',
-            '--output-file', 'test.pdf',
+            '--output-file', storage_path('app/test.pdf'),
             '--output-format', 'pdf',
             '--schemas', 'crawl_test'
         ];
