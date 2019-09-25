@@ -13,6 +13,7 @@ use DanielWerner\LaravelSchemaCrawler\Facades\SchemaCrawler;
 use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Symfony\Component\Process\Process;
 
 class SchemaController extends Controller
 {
@@ -20,7 +21,7 @@ class SchemaController extends Controller
     {
         return new SchemaCrawlerArguments(
             $request->output_file,
-            $request->output_format,
+            'scdot',
             $request->connection,
             $request->info_level,
             $request->command
@@ -29,7 +30,15 @@ class SchemaController extends Controller
 
     public function show(Request $request)
     {
+        $outputFormat = $request->output_format ?? config('laravel-schemacrawler.output_format');
+
         $file = SchemaCrawler::crawl($this->createArgumentsFromRequest($request));
+
+        // Workaround, the schemacrawler cannot call the dot, when called from php,
+        // need to manually convert the file from scdot format
+        // @see: https://github.com/schemacrawler/SchemaCrawler/issues/179
+        $process = new Process(['dot','-T',$outputFormat,$file,'-o',$file]);
+        $process->run();
 
         return response()->file($file);
     }
