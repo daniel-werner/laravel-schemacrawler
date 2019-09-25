@@ -74,7 +74,7 @@ class SchemaCrawlerArguments
     }
 
     /**
-     * @return string§
+     * @return string
      */
     public function getOutputFile(): string
     {
