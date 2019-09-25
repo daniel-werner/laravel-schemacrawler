@@ -9,14 +9,14 @@ This package is a wrapper for the [SchemaCrawler](https://www.schemacrawler.com/
 It is capable of creating database diagram from the default schema with zero configuration, but it also offers configuration options for more advanced usage. 
 
 ## Requirements
-This package ships with the build in SchemaCrawler, and it requires installed `java` version 8 and `Graphviz`.
+This package ships with the built in SchemaCrawler, and it requires installed `java` version 8 and `Graphviz`.
 
 MacOS users can install Graphviz via HomeBrew:
 ```bash
 brew install graphviz
 ```
 
-Homestead or Ubuntu user can install it via package manager:
+Homestead or Ubuntu users can install it via package manager:
 ```bash
 sudo apt-get install graphviz
 ```
@@ -30,7 +30,7 @@ composer require daniel-werner/laravel-schemacrawler
 ```
 
 ## Usage
-You can generate the diagram using the console command or through url.
+You can generate the diagram using the console command or accessing the `/schema` url.
 
 ### Console command
 ```bash
@@ -77,10 +77,10 @@ The following commands are available:
                   indexes, foreign keys, and triggers
                   
 ### Url usage
-By default the package registers the `/schema` route to your application. 
+By default the package registers the `/schema` route in your application. 
 Visiting this url the package will generate a pdf version of the default database.
 
-The configuration can be done with the following query parameters (`/schema?output_file="database.pdf"`):
+The default configuration can be overwritten with the following query parameters (e.g. `/schema?output_file="database.pdf"`):
 
 
 `output_file`  The name of the generated file
@@ -91,18 +91,24 @@ The configuration can be done with the following query parameters (`/schema?outp
 
 `info_level` Info level for SchemaCrawler, possible values are: detailed, maximum, minimum, standard, unknown
 
-`command` - See the available command above
+`command` - See the available commands above
 
 
 ### Configuration
-The default for the above detailed configuration options are set up in the package's config file. 
-If you'd like to configure these default values, publish the config file with the following command:
+The default values for the above detailed configuration options are set up in the package's config file. 
+If you'd like to change these default values, publish the config file with the following command:
 
 ```bash
 php artisan vendor:publish --provider="DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerServiceProvider"
 ```
 
 The above command will publish the `laravel-schemacrawler.php` file to your application's `config` directory.
+
+### Example output
+
+This is the database schema of my pet projects [Tracy](https://github.com/daniel-werner/tracy).
+
+![](https://www.wernerd.info/wp-content/uploads/2019/09/schema.png)
  
 ### Testing
 
@@ -112,7 +118,7 @@ composer test
 
 ### Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+Please see [CHANGELOG](CHANGELOG) for more information what has changed recently.
 
 ## Contributing
 
