@@ -76,7 +76,7 @@ The following commands are available:
                   details of tables, views and routines, columns, primary keys,
                   indexes, foreign keys, and triggers
                   
-### Url
+### Url usage
 By default the package registers the `/schema` route to your application. 
 Visiting this url the package will generate a pdf version of the default database.
 
