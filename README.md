@@ -26,7 +26,7 @@ sudo apt-get install graphviz
 You can install the package via composer:
 
 ```bash
-composer require daniel-werner/laravel-schemacrawler
+composer require daniel-werner/laravel-schemacrawler --dev
 ```
 
 ## Usage
