@@ -17,6 +17,8 @@ before_script:
   - travis_retry composer self-update
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
   - mysql -e 'create database crawl_test;'
+  - mysql -u root -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
+  - mysql -u root -e "GRANT ALL ON crawl_test.* TO 'homestead'@'localhost';"
 services:
   - mysql
 
