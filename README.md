@@ -5,8 +5,8 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/daniel-werner/laravel-schemacrawler.svg?style=flat-square)](https://scrutinizer-ci.com/g/daniel-werner/laravel-schemacrawler)
 [![Total Downloads](https://img.shields.io/packagist/dt/daniel-werner/laravel-schemacrawler.svg?style=flat-square)](https://packagist.org/packages/daniel-werner/laravel-schemacrawler)
 
-This package is a wrapper for the [SchemaCrawler](https://www.schemacrawler.com/). It allows you to generate ER diagram from the database.
-It is capable to create database diagram from the default schema with zero configuration, but it also offers configuration options for more advanced usage 
+This package is a wrapper for the [SchemaCrawler](https://www.schemacrawler.com/). It allows you to generate ER diagram right from the database.
+It is capable of creating database diagram from the default schema with zero configuration, but it also offers configuration options for more advanced usage. 
 
 ## Requirements
 This package ships with the build in SchemaCrawler, and it requires installed `java` version 8 and `Graphviz`.
@@ -47,31 +47,32 @@ The possible configuration options are the following:
 --output-format[=OUTPUT-FORMAT]   [default: "pdf"] The output file type, possible values: pdf, png, svg, html
 --connection[=CONNECTION]         [default: "default"] The connection name to use for diagram generation
 --info-level[=INFO-LEVEL]         [default: "standard"] Info level for SchemaCrawler, possible values are :detailed, maximum, minimum, standard, unknown
---command[=COMMAND]               [default: "schema"]
+--command[=COMMAND]               [default: "schema"] Command for the SchemaCrawler
 ```
 
-The following command are available:
-**brief**          Shows basic schema information, for tables, views and routines,
+The following commands are available:
+
+`brief`          Shows basic schema information, for tables, views and routines,
                   columns, primary keys, and foreign keys
                   
-**count**          Shows counts of rows in the tables
+`count`          Shows counts of rows in the tables
  
-**details**        Shows maximum possible detail of the schema, including
+`details`        Shows maximum possible detail of the schema, including
                   privileges, and details of privileges, triggers, and check
                   constraints
                   
-**dump**           Shows data from all rows in the tables
+`dump`           Shows data from all rows in the tables
  
-**lint**           Find lints (non-adherence to coding standards and conventions)
+`lint`           Find lints (non-adherence to coding standards and conventions)
                   in the database schema
                   
-**list**           Shows a list of schema objects
+`list`           Shows a list of schema objects
  
-**quickdump**      Shows data from all rows in the tables, but row order is not
+`quickdump`      Shows data from all rows in the tables, but row order is not
                   guaranteed - this can be used with a minimum info-level for
                   speed
                   
-**schema**         Shows the commonly needed detail of the schema, including
+`schema`         Shows the commonly needed detail of the schema, including
                   details of tables, views and routines, columns, primary keys,
                   indexes, foreign keys, and triggers
                   
