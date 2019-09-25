@@ -35,6 +35,9 @@ class SchemaCrawlerCommand extends Command
         $this->line('Generated diagram to ' . $file);
     }
 
+    /**
+     * @return SchemaCrawlerArguments
+     */
     private function createArgumentsFromOptions(): SchemaCrawlerArguments
     {
         return new SchemaCrawlerArguments(

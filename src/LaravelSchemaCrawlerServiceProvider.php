@@ -15,9 +15,6 @@ class LaravelSchemaCrawlerServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-schemacrawler');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-schemacrawler');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         if (config('laravel-schemacrawler.routes_enabled')) {
             $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
         }
@@ -28,20 +25,6 @@ class LaravelSchemaCrawlerServiceProvider extends ServiceProvider
                 __DIR__.'/../config/config.php' => config_path('laravel-schemacrawler.php'),
             ], 'config');
 
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-schemacrawler'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-schemacrawler'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-schemacrawler'),
-            ], 'lang');*/
 
             // Registering package commands.
              $this->commands([SchemaCrawlerCommand::class]);

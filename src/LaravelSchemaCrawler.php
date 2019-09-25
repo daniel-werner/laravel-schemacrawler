@@ -7,6 +7,10 @@ use Symfony\Component\Process\Process;
 
 class LaravelSchemaCrawler
 {
+    /**
+     * @param SchemaCrawlerArguments|null $arguments
+     * @return string|null
+     */
     public function crawl(?SchemaCrawlerArguments $arguments = null) : ?string
     {
         if ($arguments === null) {

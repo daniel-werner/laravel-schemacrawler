@@ -73,7 +73,10 @@ class SchemaCrawlerArguments
         return $arguments;
     }
 
-    public function getOutputFile()
+    /**
+     * @return string§
+     */
+    public function getOutputFile(): string§
     {
         return $this->outputFile;
     }

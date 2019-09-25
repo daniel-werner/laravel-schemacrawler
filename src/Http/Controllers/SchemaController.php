@@ -17,6 +17,10 @@ use Symfony\Component\Process\Process;
 
 class SchemaController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return SchemaCrawlerArguments
+     */
     private function createArgumentsFromRequest(Request $request): SchemaCrawlerArguments
     {
         // If the requested output format is not html, first generate scdot, and convert it manually afterwards
@@ -29,6 +33,10 @@ class SchemaController extends Controller
         );
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
     public function show(Request $request)
     {
         $outputFormat = $request->output_format ?? config('laravel-schemacrawler.output_format');
@@ -39,11 +47,11 @@ class SchemaController extends Controller
     }
 
     /**
-     * @param $outputFormat
-     * @param $file
+     * @param string $outputFormat
+     * @param string $file
      * @return string
      */
-    private function convertOutputFile($outputFormat, $file): string
+    private function convertOutputFile(string $outputFormat, string $file): string
     {
         // Workaround, the schemacrawler cannot call the dot, when called from php using Valet.
         // It is necessary to generate the schema in scdot format, and manually convert the to the output format
