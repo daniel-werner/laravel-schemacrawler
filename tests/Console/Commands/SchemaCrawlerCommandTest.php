@@ -17,7 +17,6 @@ class SchemaCrawlerCommandTest extends TestCase
      */
     public function get_schema_without_arguments()
     {
-
         $expectedFile = config('laravel-schemacrawler.output_base_path') . '/' . config('laravel-schemacrawler.output_file');
 
         $this->artisan('schema:generate')
@@ -29,46 +28,27 @@ class SchemaCrawlerCommandTest extends TestCase
 
     /**
      * @test
+     * @dataProvider formatDataProvider
      */
-    public function get_schema_png_format()
+    public function get_schema_various_format($outputFile, $outputFormat)
     {
 
-        $expectedFile = config('laravel-schemacrawler.output_base_path') . '/schema.png';
+        $expectedFile = config('laravel-schemacrawler.output_base_path') . '/' . $outputFile;
 
-        $this->artisan('schema:generate', ['--output-format' => 'png', '--output-file' => 'schema.png'])
+        $this->artisan('schema:generate', ['--output-format' => $outputFormat, '--output-file' => $outputFile])
             ->expectsOutput('Generated diagram to ' . $expectedFile)
             ->assertExitCode(0);
 
         $this->assertTrue(file_exists($expectedFile));
     }
 
-    /**
-     * @test
-     */
-    public function get_schema_html_format()
+    public function formatDataProvider()
     {
-
-        $expectedFile = config('laravel-schemacrawler.output_base_path') . '/schema.html';
-
-        $this->artisan('schema:generate', ['--output-format' => 'html', '--output-file' => 'schema.html'])
-            ->expectsOutput('Generated diagram to ' . $expectedFile)
-            ->assertExitCode(0);
-
-        $this->assertTrue(file_exists($expectedFile));
-    }
-
-    /**
-     * @test
-     */
-    public function get_schema_svg_format()
-    {
-
-        $expectedFile = config('laravel-schemacrawler.output_base_path') . '/schema.html';
-
-        $this->artisan('schema:generate', ['--output-format' => 'svg', '--output-file' => 'schema.html'])
-            ->expectsOutput('Generated diagram to ' . $expectedFile)
-            ->assertExitCode(0);
-
-        $this->assertTrue(file_exists($expectedFile));
+        return [
+            ['test.pdf', 'pdf'],
+            ['test.png', 'png'],
+            ['test.html', 'html'],
+            ['test.html', 'svg']
+        ];
     }
 }

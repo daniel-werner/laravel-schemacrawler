@@ -27,9 +27,11 @@ class SchemaCrawlerArgumentsTest extends TestCase
 
         $arguments = $crawlerArguments->toArray();
 
+        $connection = config('database.' . ($connection ?? config('laravel-schemacrawler.connection')));
+
         $expectedArguments = [
-            '--user', 'root',
-            '--password', '123',
+            '--user', config('database.connections.' . $connection . '.username'),
+            '--password', config('database.connections.' . $connection . '.password'),
             '--info-level', 'standard',
             '--command', 'schema',
             '--url', 'jdbc:mysql://127.0.0.1:3306?serverTimezone=UTC',

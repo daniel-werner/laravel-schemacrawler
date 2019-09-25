@@ -30,11 +30,13 @@ class SchemaCrawlerTest extends TestCase
         unlink($file);
     }
 
-    /** @test */
-    public function schema_crawl_test_with_arguments_pdf_output()
+    /**
+     * @test
+     * @dataProvider formatDataProvider
+     */
+    public function schema_crawl_test_with_format_arguments($fileName, $outputFormat)
     {
-        $fileName = 'test.pdf';
-        $crawlerArguments = new SchemaCrawlerArguments($fileName);
+        $crawlerArguments = new SchemaCrawlerArguments($fileName, $outputFormat);
 
         $file = SchemaCrawler::crawl($crawlerArguments);
 
@@ -42,37 +44,14 @@ class SchemaCrawlerTest extends TestCase
         unlink($file);
     }
 
-    /** @test */
-    public function schema_crawl_test_with_arguments_png_output()
+    public function formatDataProvider()
     {
-        $fileName = 'test.png';
-        $crawlerArguments = new SchemaCrawlerArguments($fileName, 'png');
-        $file = SchemaCrawler::crawl($crawlerArguments);
-
-        $this->assertTrue(file_exists($file));
-        unlink($file);
-    }
-
-    /** @test */
-    public function schema_crawl_test_with_arguments_html_output()
-    {
-        $fileName = 'test.html';
-        $crawlerArguments = new SchemaCrawlerArguments($fileName, 'html');
-        $file = SchemaCrawler::crawl($crawlerArguments);
-
-        $this->assertTrue(file_exists($file));
-        unlink($file);
-    }
-
-    /** @test */
-    public function schema_crawl_test_with_arguments_svg_output()
-    {
-        $fileName = 'test.html';
-        $crawlerArguments = new SchemaCrawlerArguments($fileName, 'svg');
-        $file = SchemaCrawler::crawl($crawlerArguments);
-
-        $this->assertTrue(file_exists($file));
-        unlink($file);
+        return [
+            ['test.pdf', 'pdf'],
+            ['test.png', 'png'],
+            ['test.html', 'html'],
+            ['test.html', 'svg']
+        ];
     }
 
     /** @test */

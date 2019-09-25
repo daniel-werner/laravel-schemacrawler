@@ -24,46 +24,27 @@ class SchemaControllerTest extends TestCase
 
     /**
      * @test
+     * @dataProvider formatDataProvider
      */
-    public function get_schema_png_format()
+    public function get_schema_various_formats($outputFile, $outputFormat, $expectedContentType)
     {
         $params = [
-            'output_file' => 'schema.png',
-            'output_format' => 'png'
+            'output_file' => $outputFile,
+            'output_format' => $outputFormat
         ];
 
         $this->get(route('schema.show', $params) )
             ->assertStatus(200)
-            ->assertHeader('content-type', 'image/png');
+            ->assertHeader('content-type', $expectedContentType);
     }
 
-    /**
-     * @test
-     */
-    public function get_schema_html_format()
+    public function formatDataProvider()
     {
-        $params = [
-            'output_file' => 'schema.html',
-            'output_format' => 'html'
+        return [
+            ['test.pdf', 'pdf', 'application/pdf'],
+            ['test.png', 'png', 'image/png'],
+            ['test.html', 'html', 'text/html'],
+            ['test.html', 'svg', 'image/svg+xml']
         ];
-
-        $this->get(route('schema.show', $params) )
-            ->assertStatus(200)
-            ->assertHeader('content-type', 'text/html');
-    }
-
-    /**
-     * @test
-     */
-    public function get_schema_svg_format()
-    {
-        $params = [
-            'output_file' => 'schema.html',
-            'output_format' => 'svg'
-        ];
-
-        $this->get(route('schema.show', $params) )
-            ->assertStatus(200)
-            ->assertHeader('content-type', 'image/svg+xml');
     }
 }
