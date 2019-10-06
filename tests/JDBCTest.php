@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: vernerd
  * Date: 2019-09-23
- * Time: 19:40
+ * Time: 19:40.
  */
 
 namespace DanielWerner\LaravelSchemaCrawler\Tests;
@@ -12,7 +12,6 @@ use DanielWerner\LaravelSchemaCrawler\JDBC;
 
 class JDBCTest extends TestCase
 {
-
     /**
      * @test
      */

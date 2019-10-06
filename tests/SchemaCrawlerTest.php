@@ -2,9 +2,9 @@
 
 namespace DanielWerner\LaravelSchemaCrawler\Tests;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use DanielWerner\LaravelSchemaCrawler\Facades\SchemaCrawler;
 use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class SchemaCrawlerTest extends TestCase
@@ -20,7 +20,6 @@ class SchemaCrawlerTest extends TestCase
     {
         parent::tearDown();
     }
-
 
     /** @test */
     public function schema_crawl_test()
@@ -50,7 +49,7 @@ class SchemaCrawlerTest extends TestCase
             ['test.pdf', 'pdf'],
             ['test.png', 'png'],
             ['test.html', 'html'],
-            ['test.html', 'svg']
+            ['test.html', 'svg'],
         ];
     }
 
@@ -61,8 +60,5 @@ class SchemaCrawlerTest extends TestCase
 
         $this->expectException(ProcessFailedException::class);
         SchemaCrawler::crawl();
-
     }
-
-
 }

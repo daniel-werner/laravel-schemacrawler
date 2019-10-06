@@ -3,15 +3,13 @@
  * Created by PhpStorm.
  * User: vernerd
  * Date: 2019-09-23
- * Time: 19:38
+ * Time: 19:38.
  */
 
 namespace DanielWerner\LaravelSchemaCrawler;
 
-
 class JDBC
 {
-
     /**
      * @param string $databaseDriver
      * @param string $server
@@ -22,7 +20,7 @@ class JDBC
     {
         $url = '';
 
-        switch($databaseDriver){
+        switch ($databaseDriver) {
             case 'mysql':
                 $url = 'jdbc:mysql://%s:%d?serverTimezone=UTC';
                 break;
