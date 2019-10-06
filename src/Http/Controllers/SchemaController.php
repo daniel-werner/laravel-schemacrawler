@@ -3,17 +3,16 @@
  * Created by PhpStorm.
  * User: vernerd
  * Date: 2019-09-24
- * Time: 20:07
+ * Time: 20:07.
  */
 
 namespace DanielWerner\LaravelSchemaCrawler\Http\Controllers;
 
-
-use DanielWerner\LaravelSchemaCrawler\Facades\SchemaCrawler;
-use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Symfony\Component\Process\Process;
+use DanielWerner\LaravelSchemaCrawler\Facades\SchemaCrawler;
+use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
 
 class SchemaController extends Controller
 {

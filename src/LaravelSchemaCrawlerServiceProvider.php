@@ -2,8 +2,8 @@
 
 namespace DanielWerner\LaravelSchemaCrawler;
 
-use DanielWerner\LaravelSchemaCrawler\Console\Commands\SchemaCrawlerCommand;
 use Illuminate\Support\ServiceProvider;
+use DanielWerner\LaravelSchemaCrawler\Console\Commands\SchemaCrawlerCommand;
 
 class LaravelSchemaCrawlerServiceProvider extends ServiceProvider
 {
@@ -19,15 +19,13 @@ class LaravelSchemaCrawlerServiceProvider extends ServiceProvider
             $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
         }
 
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('laravel-schemacrawler.php'),
             ], 'config');
 
-
             // Registering package commands.
-             $this->commands([SchemaCrawlerCommand::class]);
+            $this->commands([SchemaCrawlerCommand::class]);
         }
     }
 

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: vernerd
  * Date: 2019-09-24
- * Time: 22:42
+ * Time: 22:42.
  */
 
 namespace DanielWerner\LaravelSchemaCrawler\Tests\Console\Commands;
@@ -17,10 +17,10 @@ class SchemaCrawlerCommandTest extends TestCase
      */
     public function get_schema_without_arguments()
     {
-        $expectedFile = config('laravel-schemacrawler.output_base_path') . '/' . config('laravel-schemacrawler.output_file');
+        $expectedFile = config('laravel-schemacrawler.output_base_path').'/'.config('laravel-schemacrawler.output_file');
 
         $this->artisan('schema:generate')
-            ->expectsOutput('Generated diagram to ' . $expectedFile)
+            ->expectsOutput('Generated diagram to '.$expectedFile)
             ->assertExitCode(0);
 
         $this->assertTrue(file_exists($expectedFile));
@@ -32,11 +32,10 @@ class SchemaCrawlerCommandTest extends TestCase
      */
     public function get_schema_various_format($outputFile, $outputFormat)
     {
-
-        $expectedFile = config('laravel-schemacrawler.output_base_path') . '/' . $outputFile;
+        $expectedFile = config('laravel-schemacrawler.output_base_path').'/'.$outputFile;
 
         $this->artisan('schema:generate', ['--output-format' => $outputFormat, '--output-file' => $outputFile])
-            ->expectsOutput('Generated diagram to ' . $expectedFile)
+            ->expectsOutput('Generated diagram to '.$expectedFile)
             ->assertExitCode(0);
 
         $this->assertTrue(file_exists($expectedFile));
@@ -48,7 +47,7 @@ class SchemaCrawlerCommandTest extends TestCase
             ['test.pdf', 'pdf'],
             ['test.png', 'png'],
             ['test.html', 'html'],
-            ['test.html', 'svg']
+            ['test.html', 'svg'],
         ];
     }
 }
