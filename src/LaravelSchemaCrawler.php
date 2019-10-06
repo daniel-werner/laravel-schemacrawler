@@ -2,8 +2,8 @@
 
 namespace DanielWerner\LaravelSchemaCrawler;
 
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class LaravelSchemaCrawler
 {
@@ -18,7 +18,7 @@ class LaravelSchemaCrawler
         }
 
         $crawlerArgumentsArray = $arguments->toArray();
-        $command = __DIR__ . '/../bin/schemacrawler/' . config('laravel-schemacrawler.schemacrawler_executable');
+        $command = __DIR__.'/../bin/schemacrawler/'.config('laravel-schemacrawler.schemacrawler_executable');
         array_unshift($crawlerArgumentsArray, $command);
 
         $process = new Process($crawlerArgumentsArray);

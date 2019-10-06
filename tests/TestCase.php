@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: vernerd
  * Date: 2019-09-13
- * Time: 19:41
+ * Time: 19:41.
  */
 
 namespace DanielWerner\LaravelSchemaCrawler\Tests;
-
 
 use DanielWerner\LaravelSchemaCrawler\SchemaCrawler;
 use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerServiceProvider;
@@ -22,7 +21,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'SchemaCrawler' => SchemaCrawler::class
+            'SchemaCrawler' => SchemaCrawler::class,
         ];
     }
 
@@ -47,7 +46,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
                 'engine' => null,
             ],
         ]);
-
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->artisan('migrate')->run();

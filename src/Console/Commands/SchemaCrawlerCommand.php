@@ -3,15 +3,14 @@
  * Created by PhpStorm.
  * User: vernerd
  * Date: 2019-09-24
- * Time: 22:30
+ * Time: 22:30.
  */
 
 namespace DanielWerner\LaravelSchemaCrawler\Console\Commands;
 
-
+use Illuminate\Console\Command;
 use DanielWerner\LaravelSchemaCrawler\Facades\SchemaCrawler;
 use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
-use Illuminate\Console\Command;
 
 class SchemaCrawlerCommand extends Command
 {
@@ -32,7 +31,7 @@ class SchemaCrawlerCommand extends Command
     public function handle()
     {
         $file = SchemaCrawler::crawl($this->createArgumentsFromOptions());
-        $this->line('Generated diagram to ' . $file);
+        $this->line('Generated diagram to '.$file);
     }
 
     /**
@@ -48,5 +47,4 @@ class SchemaCrawlerCommand extends Command
             $this->hasOption('command') ? $this->option('command') : null
         );
     }
-
 }
