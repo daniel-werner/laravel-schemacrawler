@@ -19,7 +19,8 @@ class SchemaCrawlerCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'schema:generate {--output-file=schema.pdf} {--output-format=pdf} {--connection=default} {--info-level=standard} {--command=schema}';
+    protected $signature = 'schema:generate {--output-file=schema.pdf} {--output-format=pdf} 
+                            {--connection=default} {--info-level=standard} {--command=schema}';
 
     /**
      * The console command description.

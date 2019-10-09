@@ -30,7 +30,6 @@ class JDBC
             case 'sqlsrv':
                 $url = 'jdbc:sqlserver://%s:%d?serverTimezone=UTC';
                 break;
-
         }
 
         $url = sprintf($url, $server, $port);
