@@ -4,3 +4,4 @@ vendor/
 build/
 coverage/
 .DS_Store
+.php_cs.cache
