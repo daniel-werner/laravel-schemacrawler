@@ -2,8 +2,8 @@
 
 namespace DanielWerner\LaravelSchemaCrawler\Facades;
 
-use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
 use Illuminate\Support\Facades\Facade;
+use DanielWerner\LaravelSchemaCrawler\SchemaCrawlerArguments;
 
 /**
  * @see \DanielWerner\LaravelSchemacrawler\LaravelSchemaCrawler
