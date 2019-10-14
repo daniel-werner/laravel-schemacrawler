@@ -14,8 +14,9 @@ class SchemaCrawlerArgumentsTest extends TestCase
 {
     /**
      * @test
+     * @return void
      */
-    public function test_arguments_to_array()
+    public function test_arguments_to_array(): void
     {
         $crawlerArguments = new SchemaCrawlerArguments(
             'test.pdf',

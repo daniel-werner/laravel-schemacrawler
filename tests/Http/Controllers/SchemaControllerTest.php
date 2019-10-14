@@ -14,8 +14,9 @@ class SchemaControllerTest extends TestCase
 {
     /**
      * @test
+     * @return void
      */
-    public function get_schema_without_arguments()
+    public function get_schema_without_arguments(): void
     {
         $this->get(route('schema.show'))
             ->assertStatus(200)
@@ -25,8 +26,11 @@ class SchemaControllerTest extends TestCase
     /**
      * @test
      * @dataProvider formatDataProvider
+     * @param string $outputFile
+     * @param string $outputFormat
+     * @param string $expectedContentType
      */
-    public function get_schema_various_formats($outputFile, $outputFormat, $expectedContentType)
+    public function get_schema_various_formats($outputFile, $outputFormat, $expectedContentType): void
     {
         $params = [
             'output_file' => $outputFile,
@@ -37,8 +41,10 @@ class SchemaControllerTest extends TestCase
             ->assertStatus(200)
             ->assertHeader('content-type', $expectedContentType);
     }
-
-    public function formatDataProvider()
+    /**
+     * @return array
+     */
+    public function formatDataProvider(): array
     {
         return [
             ['test.pdf', 'pdf', 'application/pdf'],

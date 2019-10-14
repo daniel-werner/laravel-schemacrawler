@@ -62,7 +62,10 @@ class SchemaCrawlerArguments
         $this->schemas = config('database.connections.'.$connection.'.database');
     }
 
-    public function toArray()
+    /**
+     * @return array
+     */
+    public function toArray(): array
     {
         $arguments = [];
 

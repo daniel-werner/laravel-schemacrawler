@@ -13,18 +13,31 @@ use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
-    protected function getPackageProviders($app)
+    /**
+     * @param $app
+     * @return array
+     */
+    protected function getPackageProviders($app): array
     {
         return [LaravelSchemaCrawlerServiceProvider::class];
     }
 
-    protected function getPackageAliases($app)
+    /**
+     * @param $app
+     * @return array
+     */
+    protected function getPackageAliases($app): array
     {
         return [
             'SchemaCrawler' => SchemaCrawler::class,
         ];
     }
 
+    /**
+     * Prepares the DB before running tests
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();

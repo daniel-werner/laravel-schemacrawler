@@ -11,18 +11,27 @@ class SchemaCrawlerTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         parent::tearDown();
     }
 
-    /** @test */
-    public function schema_crawl_test()
+    /**
+     * @test
+     * @return void
+     */
+    public function schema_crawl_test(): void
     {
         $file = SchemaCrawler::crawl();
         $this->assertTrue(file_exists($file));
@@ -32,8 +41,10 @@ class SchemaCrawlerTest extends TestCase
     /**
      * @test
      * @dataProvider formatDataProvider
+     * @param string|null $fileName
+     * @param string|null $outputFormat
      */
-    public function schema_crawl_test_with_format_arguments($fileName, $outputFormat)
+    public function schema_crawl_test_with_format_arguments($fileName, $outputFormat): void
     {
         $crawlerArguments = new SchemaCrawlerArguments($fileName, $outputFormat);
 
@@ -43,7 +54,10 @@ class SchemaCrawlerTest extends TestCase
         unlink($file);
     }
 
-    public function formatDataProvider()
+    /**
+     * @return array
+     */
+    public function formatDataProvider(): array
     {
         return [
             ['test.pdf', 'pdf'],
@@ -53,8 +67,11 @@ class SchemaCrawlerTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function schema_crawl_test_invalid_crawler_executable()
+    /**
+     * @test
+     * @return void
+     */
+    public function schema_crawl_test_invalid_crawler_executable(): void
     {
         config(['laravel-schemacrawler.schemacrawler_executable' => 'non_existing']);
 
