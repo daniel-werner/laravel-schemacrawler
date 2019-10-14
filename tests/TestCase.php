@@ -14,6 +14,7 @@ use DanielWerner\LaravelSchemaCrawler\LaravelSchemaCrawlerServiceProvider;
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
+     * @param $app
      * @return array
      */
     protected function getPackageProviders($app): array
@@ -22,6 +23,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     }
 
     /**
+     * @param $app
      * @return array
      */
     protected function getPackageAliases($app): array

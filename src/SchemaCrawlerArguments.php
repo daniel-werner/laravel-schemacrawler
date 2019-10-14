@@ -35,6 +35,7 @@ class SchemaCrawlerArguments
      * @param string|null $connection
      * @param string|null $infoLevel
      * @param string|null $command
+     * @return void
      */
     public function __construct(
         ?string $outputFile = null,

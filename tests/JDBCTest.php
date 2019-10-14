@@ -14,6 +14,7 @@ class JDBCTest extends TestCase
 {
     /**
      * @test
+     * @return void
      */
     public function mysql_url()
     {
@@ -25,6 +26,7 @@ class JDBCTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function postgres_url()
     {
@@ -36,6 +38,7 @@ class JDBCTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
     public function sql_server_url()
     {

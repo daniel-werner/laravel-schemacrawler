@@ -14,6 +14,7 @@ class SchemaControllerTest extends TestCase
 {
     /**
      * @test
+     * @return void
      */
     public function get_schema_without_arguments(): void
     {

@@ -14,6 +14,7 @@ class SchemaCrawlerArgumentsTest extends TestCase
 {
     /**
      * @test
+     * @return void
      */
     public function test_arguments_to_array()
     {

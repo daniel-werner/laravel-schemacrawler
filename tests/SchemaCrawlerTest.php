@@ -11,17 +11,26 @@ class SchemaCrawlerTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         parent::tearDown();
     }
 
-    /** @test */
+    /**
+     * @test
+     * @return void
+     */
     public function schema_crawl_test(): void
     {
         $file = SchemaCrawler::crawl();
@@ -32,6 +41,8 @@ class SchemaCrawlerTest extends TestCase
     /**
      * @test
      * @dataProvider formatDataProvider
+     * @param string|null $fileName
+     * @param string|null $outputFormat
      */
     public function schema_crawl_test_with_format_arguments($fileName, $outputFormat): void
     {
@@ -56,7 +67,10 @@ class SchemaCrawlerTest extends TestCase
         ];
     }
 
-    /** @test */
+    /**
+     * @test
+     * @return void
+     */
     public function schema_crawl_test_invalid_crawler_executable(): void
     {
         config(['laravel-schemacrawler.schemacrawler_executable' => 'non_existing']);
