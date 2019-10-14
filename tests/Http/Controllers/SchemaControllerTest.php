@@ -41,6 +41,7 @@ class SchemaControllerTest extends TestCase
             ->assertStatus(200)
             ->assertHeader('content-type', $expectedContentType);
     }
+
     /**
      * @return array
      */

@@ -34,7 +34,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     }
 
     /**
-     * Prepares the DB before running tests
+     * Prepares the DB before running tests.
      *
      * @return void
      */
