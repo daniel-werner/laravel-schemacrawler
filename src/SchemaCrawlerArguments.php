@@ -43,7 +43,7 @@ class SchemaCrawlerArguments
         ?string $connection = null,
         ?string $infoLevel = null,
         ?string $command = null
-    ) {
+    ): void {
         $connection = config('database.'.($connection ?? config('laravel-schemacrawler.connection')));
 
         $this->user = config('database.connections.'.$connection.'.username');

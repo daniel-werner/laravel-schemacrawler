@@ -16,7 +16,7 @@ class JDBCTest extends TestCase
      * @test
      * @return void
      */
-    public function mysql_url()
+    public function mysql_url(): void
     {
         $url = JDBC::url('mysql', '127.0.0.1', 3306);
         $expectedUrl = 'jdbc:mysql://127.0.0.1:3306?serverTimezone=UTC';
@@ -28,7 +28,7 @@ class JDBCTest extends TestCase
      * @test
      * @return void
      */
-    public function postgres_url()
+    public function postgres_url(): void
     {
         $url = JDBC::url('pgsql', '127.0.0.1', 5740);
         $expectedUrl = 'jdbc:postgresql://127.0.0.1:5740?serverTimezone=UTC';
@@ -40,7 +40,7 @@ class JDBCTest extends TestCase
      * @test
      * @return void
      */
-    public function sql_server_url()
+    public function sql_server_url(): void
     {
         $url = JDBC::url('sqlsrv', '127.0.0.1', 1433);
         $expectedUrl = 'jdbc:sqlserver://127.0.0.1:1433?serverTimezone=UTC';
