@@ -18,6 +18,7 @@ class JDBCTest extends TestCase
      */
     public function mysql_url(): void
     {
+        // try
         $url = JDBC::url('mysql', '127.0.0.1', 3306);
         $expectedUrl = 'jdbc:mysql://127.0.0.1:3306?serverTimezone=UTC';
 
