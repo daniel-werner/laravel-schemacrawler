@@ -2,6 +2,9 @@
 VERSION 2  SCHEMACRAWLER UPDATED TO 16.7.2 AND LARAVEL 7 SUPPORT
 ================================================================
 
+   Version 2.1 - Update schemacrawler to 16.15.11
+      31/10/2021 16:04  2.1.0  initial release
+
    Version 2.0 - Schemacrawler updated to 16.7.2 and Laravel 7 support
       28/05/2020 07:45  2.0.0  initial release
 
