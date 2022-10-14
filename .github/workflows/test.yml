@@ -5,15 +5,15 @@ on: [push, pull_request]
 jobs:
   run-tests:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: crawl_test
+#    services:
+#      mysql:
+#        image: mysql:5.7
+#        env:
+#          MYSQL_ROOT_PASSWORD: root
+#          MYSQL_DATABASE: crawl_test
 #        ports:
 #          - 3307:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+#        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     strategy:
         matrix:
             php-versions: ['7.4']
@@ -27,6 +27,7 @@ jobs:
     - name: Set up Database
       run: |
         sudo systemctl start mysql
+        mysql -e 'create database crawl_test;'
         mysql -u root -proot -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
         mysql -u root -proot -e "GRANT ALL ON crawl_test.* TO 'homestead'@'localhost';"
     - name: Install Dependencies
