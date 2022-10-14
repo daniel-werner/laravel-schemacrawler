@@ -1,0 +1,31 @@
+name: Run Tests
+
+on: [push, pull_request]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            php-versions: ['7.4', '8.0']
+            composer-flags: ["--prefer-lowest", ""]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+           php-version: ${{ matrix.php-versions }}
+    - name: Install Graphviz
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y graphviz
+    - name: Set up Database
+      run: |
+        sudo systemctl start mysql
+        mysql -u root -proot -e 'create database crawl_test;'
+        mysql -u root -proot -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
+        mysql -u root -proot -e "GRANT ALL ON crawl_test.* TO 'homestead'@'localhost';"
+    - name: Install Dependencies
+      run: composer update ${composer-flags} --no-interaction --prefer-source
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: vendor/bin/phpunit

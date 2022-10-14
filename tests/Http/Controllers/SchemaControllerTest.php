@@ -50,7 +50,7 @@ class SchemaControllerTest extends TestCase
         return [
             ['test.pdf', 'pdf', 'application/pdf'],
             ['test.png', 'png', 'image/png'],
-            ['test.html', 'html', 'text/html'],
+            ['test.html', 'html', 'text/html; charset=UTF-8'],
             ['test.html', 'svg', 'image/svg+xml'],
         ];
     }
