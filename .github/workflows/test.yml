@@ -9,7 +9,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: crawl_test
         ports:
           - 3307:3306
@@ -26,9 +26,9 @@ jobs:
            php-version: ${{ matrix.php-versions }}
     - name: Install Dependencies
       run: composer update ${composer-flags} --no-interaction --prefer-source
-    - name: Seut up Database
-      run: |
-        mysql -u root -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
-        mysql -u root -e "GRANT ALL ON crawl_test.* TO 'homestead'@'localhost';"
+#    - name: Set up Database
+#      run: |
+#        mysql -u root -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
+#        mysql -u root -e "GRANT ALL ON crawl_test.* TO 'homestead'@'localhost';"
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
