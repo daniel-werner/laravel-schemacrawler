@@ -24,11 +24,11 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
            php-version: ${{ matrix.php-versions }}
+    - name: Set up Database
+      run: |
+        mysql -u root -proot -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
+        mysql -u root -proot -e "GRANT ALL ON crawl_test.* TO 'homestead'@'localhost';"
     - name: Install Dependencies
       run: composer update ${composer-flags} --no-interaction --prefer-source
-#    - name: Set up Database
-#      run: |
-#        mysql -u root -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';"
-#        mysql -u root -e "GRANT ALL ON crawl_test.* TO 'homestead'@'localhost';"
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
