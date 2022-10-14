@@ -49,7 +49,10 @@
         "insights" : "vendor/bin/phpmd src text phpmd.xml"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "ocramius/package-versions": true
+        }
     },
     "extra": {
         "laravel": {
