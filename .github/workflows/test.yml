@@ -16,7 +16,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     strategy:
         matrix:
-            php-versions: ['7.4', '8.0']
+            php-versions: ['7.4']
             composer-flags: ["--prefer-lowest", ""]
     steps:
     - uses: actions/checkout@v2
